@@ -1,0 +1,119 @@
+<!-- scrape_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Scraped Results</title>
+</head>
+<body>
+    <h2 class="text-center">Meta Content Results</h2>
+    <!-- <table>
+        <thead>
+            <tr>
+                <th>Meta Title</th>
+                <th class="text-center">Meta Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %} -->
+            <!-- <tr>
+                <td>{{ results[0] }}</td>
+                <td>{{"  "}}</td>
+                <td>{{ results[2] }}</td>
+            </tr> -->
+            <!-- {% endfor %} -->
+        <!-- </tbody> -->
+        <!-- <thead>
+            <tr>
+                <th>Meta Title Size</th> -->
+                <!-- <th>Meta Description Size</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{results[1]}}</td>
+                <td>{{" "}}</td>
+                <td>{{ results[3]}}</td>
+            </tr>
+        </tbody>
+    </table> --> 
+    <table class="table">
+        <thead>
+          <tr>
+            
+            <th scope="col">Domain</th>
+            <th scope="col">Content</th>
+            <th scope="col">Size</th>
+            <th scope="col">Review</th>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr>
+            <th scope="row">Meta Title</th>
+            <td>{{results[0]}}</td>
+
+            <td>{{results[1]}}</td>
+
+            <td>{{results[4]}}</td>
+          
+            
+          </tr>
+          <tr>
+            <th scope="row">Meta Description</th>
+            <td>{{results[2]}}</td>
+            <td>{{results[3]}}</td>
+            <td>{{results[5]}}</td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+      <!-- displaying the alt tags  -->
+      <h2 class="text-center">Image Alt Tags</h2>
+      <p class="text-center">The number of empty alt tags present are <b>{{results[6]}}</b></p>
+
+      <h2 class="text-center">Social Link Status</h2>
+      <p class="text-center">Facebook:{{results[7]}}</p><p class="text-center">Instagram:{{results[8]}}</p><p class="text-center">Linkedin:{{results[9]}}</p><p class="text-center">Twitter:{{results[10]}}</p><p class="text-center">Youtube:{{results[11]}}</p>
+
+      <h2 class="text-center">Robots.txt , Sitemap.xml , sitemap.html</h2>
+      <p class="text-center">Robots.txt:{{results[12]}}</p>
+      <p class="text-center">sitemap.xml:{{results[13]}}</p>
+      <p class="text-center">sitemap.html:{{results[14]}}</p>
+
+      <h2 class="text-center">Canonical Url </h2>
+      <p class="text-center"><b>{{results[15]}}</b></p>
+
+      <h2 class="text-center">UTF  </h2>
+      <p class="text-center"><b>{{results[16]}}</b></p>
+
+      <h2 class="text-center">GTM Tag </h2>
+      <p class="text-center"><b>{{results[17]}}</b></p>
+
+      <h2 class="text-center">H Tags Count</h2>
+      <p class="text-center">h1 : {{results[18]}}</p>
+      <p class="text-center">h2 : {{results[19]}}</p>
+      <p class="text-center">h3 : {{results[20]}}</p>
+      <p class="text-center">h4 : {{results[21]}}</p>
+      <p class="text-center">h5 : {{results[22]}}</p>
+      <p class="text-center">h6 : {{results[23]}}</p>
+
+      <h2 class="text-center">Total Words Count</h2>
+      <p class="text-center"><b>{{results[24]}}</b></p>
+
+      <h2 class="text-center">Website Speed</h2>
+      <p class="text-center">Website load Speed : <b>{{results[25]}}</b> seconds</p>
+      <p class="text-center">Mobile load Speed : <b>{{results[26]}}</b> seconds</p>
+
+      
+
+      
+      
+      
+      
+
+
+</body>
+</html>

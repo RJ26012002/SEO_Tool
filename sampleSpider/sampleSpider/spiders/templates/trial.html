@@ -1,0 +1,256 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show All Functionality</title>
+    <style>
+        /* Styles for the table */
+        .table-container {
+            max-width: 600px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        th, td {
+            padding: 8px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Hide rows by default */
+        .hidden {
+            display: none;
+        }
+
+        /* Style for the Show All and Show Less buttons */
+        .btn-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .show-btn {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>30</td>
+                    <td>New York</td>
+                </tr>
+                <!-- Additional rows here -->
+                <!-- <tr class="hidden">
+                    <td>Jane</td>
+                    <td>25</td>
+                    <td>Los Angeles</td>
+                </tr>
+                <tr class="hidden">
+                    <td>Bob</td>
+                    <td>40</td>
+                    <td>Chicago</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="btn-container">
+            <button class="show-btn" id="show-all-btn">Show All</button>
+            <button class="show-btn" id="show-less-btn" style="display: none;">Show Less</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('show-all-btn').addEventListener('click', function() {
+            var hiddenRows = document.querySelectorAll('.hidden');
+            hiddenRows.forEach(function(row) {
+                row.style.display = 'table-row';
+            });
+            this.style.display = 'none'; // Hide the "Show All" button
+            document.getElementById('show-less-btn').style.display = 'inline-block'; // Show the "Show Less" button
+        });
+
+        document.getElementById('show-less-btn').addEventListener('click', function() {
+            var visibleRows = document.querySelectorAll('tbody tr:not(.hidden)');
+            if (visibleRows.length > 1) { // Keep at least one row visible
+                visibleRows[visibleRows.length - 1].classList.add('hidden'); // Hide the last visible row
+            }
+            if (document.querySelectorAll('tbody tr.hidden').length === 0) { // If no rows are hidden, hide the "Show Less" button
+                this.style.display = 'none';
+            }
+            document.getElementById('show-all-btn').style.display = 'inline-block'; // Show the "Show All" button
+        });
+    </script>
+</body>
+</html> --> 
+
+
+<!-- new code here  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show All Functionality</title>
+    <style>
+        /* Styles for the table */
+        .links_table-container {
+            max-width: 600px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        th, td {
+            padding: 8px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Hide rows by default */
+        .links_hidden {
+            display: none;
+        }
+
+        /* Style for the Show All and Show Less buttons */
+        .links_btn-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .links_show-btn{
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="links_table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>30</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>Jo</td>
+                    <td>3</td>
+                    <td>N York</td>
+                </tr>
+                <!-- Additional rows here -->
+                <tr class="links_hidden">
+                    <td>Jane</td>
+                    <td>25</td>
+                    <td>Los Angeles</td>
+                </tr>
+                <tr class="links_hidden">
+                    <td>Bob</td>
+                    <td>40</td>
+                    <td>Chicago</td>
+                </tr>
+                <tr class="links_hidden">
+                    <td>Bb</td>
+                    <td>45</td>
+                    <td>Chio</td>
+                </tr>
+                <tr class="links_hidden">
+                    <td>Bob</td>
+                    <td>40</td>
+                    <td>Chicago</td>
+                </tr>
+                <tr class="links_hidden">
+                    <td>Bb</td>
+                    <td>45</td>
+                    <td>Chio</td>
+                </tr>
+                <tr class="links_hidden">
+                    <td>Bob</td>
+                    <td>40</td>
+                    <td>Chicago</td>
+                </tr>
+                <tr class="links_hidden">
+                    <td>Bb</td>
+                    <td>45</td>
+                    <td>Chio</td>
+                </tr>
+                <tr class="links_hidden">
+                    <td>Bob</td>
+                    <td>40</td>
+                    <td>Chicago</td>
+                </tr>
+                <tr class="links_hidden">
+                    <td>Bb</td>
+                    <td>45</td>
+                    <td>Chio</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="links_btn-container">
+            <button class="links_show-btn" id="show-all-btn">Show All</button>
+            <button class="links_show-btn" id="show-less-btn" style="display: none;">Show Less</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('show-all-btn').addEventListener('click', function() {
+            var hiddenRows = document.querySelectorAll('.links_hidden');
+            hiddenRows.forEach(function(row) {
+                row.style.display = 'table-row';
+            });
+            this.style.display = 'none'; // Hide the "Show All" button
+            document.getElementById('show-less-btn').style.display = 'inline-block'; // Show the "Show Less" button
+        });
+
+        document.getElementById('show-less-btn').addEventListener('click', function() {
+            var hiddenRows = document.querySelectorAll('.links_hidden');
+            hiddenRows.forEach(function(row) {
+                row.style.display = 'none'; // Hide all rows
+            });
+            // hiddenRows[0].style.display = 'table-row'; // Show the first hidden row
+            this.style.display = 'none'; // Hide the "Show Less" button
+            document.getElementById('show-all-btn').style.display = 'inline-block'; // Show the "Show All" button
+        });
+    </script>
+</body>
+</html>

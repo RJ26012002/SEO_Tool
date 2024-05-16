@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div id="data" style="display: none;">{{results[30]}}</div>
+
+<title>Dynamic Table</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  #readMoreBtn {
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+  }
+    .green-text {
+            color: green;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+    .red-text {
+            color: red;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+  
+</style>
+</head>
+<body>
+
+<table>
+  <thead>
+    <tr>
+      <th>Link</th>
+      <th>Anchor</th>
+      <th>Response</th>
+    </tr>
+  </thead>
+  <tbody id="table-body">
+    <!-- Table rows will be dynamically added here -->
+  </tbody>
+</table>
+
+<button id="readMoreBtn" onclick="toggleRows()">Read more</button>
+<script>
+    // Function to create table rows
+    function createTableRows(data) {
+        const tbody = document.getElementById('table-body');
+
+        for (const [link, [anchor, response]] of Object.entries(data)) {
+            const row = document.createElement('tr');
+            const linkCell = document.createElement('td');
+            const anchorCell = document.createElement('td');
+            const responseCell = document.createElement('td');
+
+            // link  = <a href ="link">link</a>;
+            const linkAnchor = document.createElement('a');
+            linkAnchor.textContent = link;
+            linkAnchor.href = link;
+            linkAnchor.target = "_blank"; // Open link in new tab
+            linkCell.appendChild(linkAnchor);
+            anchorCell.textContent = anchor || 'Not Found'; // handling null value
+            console.log("the tect contet of acnhir siel is ss ",anchorCell.textContent);
+            if(anchorCell.textContent === 'Not Found'){
+                // console.log("inside anchorcell if bloack ");
+                anchorCell.classList.add('red-text');
+            }
+            responseCell.textContent = response;
+            if (response === '200') {
+                // console.log("I am comimg in if block");
+                responseCell.classList.add('green-text');
+            } else {
+                // console.log("I am comimg in if block");
+                responseCell.classList.add('red-text');
+            }
+
+            row.appendChild(linkCell);
+            row.appendChild(anchorCell);
+            row.appendChild(responseCell);
+
+            tbody.appendChild(row);
+            // Initially hide rows beyond the first 10
+            // console.log("Coming here for ",link)
+            if (parseInt(link.slice(4)) > 10) {
+                // console.log("tp this list the hidden is added",link)
+                row.classList.add('hidden');
+              }
+            // console.log("after coming here for ",link)
+        }
+    }
+
+    // Function to toggle visibility of rows
+    function toggleRows() {
+        const rows = document.querySelectorAll('#table-body tr');
+            const readMoreBtn = document.getElementById('readMoreBtn');
+        
+            rows.forEach(row => {
+              if (row.classList.contains('hidden')) {
+                row.classList.remove('hidden');
+              } else {
+                if (parseInt(row.firstChild.textContent.slice(4)) > 10) {
+                  row.classList.add('hidden');
+                }
+              }
+        });
+
+        if (readMoreBtn.textContent === 'Read more') {
+            readMoreBtn.textContent = 'Read less';
+        } else {
+            readMoreBtn.textContent = 'Read more';
+        }
+    }
+
+    // Access the list item and parse its content
+    const listItem = document.getElementById('data');
+    const listItemContent = listItem.textContent.trim();
+    const data = JSON.parse(listItemContent.replace(/'/g, '"').replace(/None/g, 'null')); // Replace single quotes with double quotes for valid JSON and "None" with "null"
+
+    // Call the function to create table rows with the retrieved data
+    createTableRows(data);
+</script>
+
+
+<!-- Hidden list item containing the data -->
+<div id="data" style="display: none;">{{results[30]}}</div>
+
+
+<!-- <script>
+    const data = {
+        'https://forms.gle/kC38HewoEbysmG7Z7': ['Participate', '410'],
+        'https://www.linkedin.com/company/apollo-sage-hospital/': [null, '999']
+        // Add more data here if needed...
+    };
+
+    // Function to create table rows
+    function createTableRows() {
+        const tbody = document.getElementById('table-body');
+
+        for (const [link, [anchor, response]] of Object.entries(data)) {
+            const row = document.createElement('tr');
+            const linkCell = document.createElement('td');
+            const anchorCell = document.createElement('td');
+            const responseCell = document.createElement('td');
+
+            linkCell.textContent = link;
+            anchorCell.textContent = anchor || ''; // handling null value
+            responseCell.textContent = response;
+
+            row.appendChild(linkCell);
+            row.appendChild(anchorCell);
+            row.appendChild(responseCell);
+
+            tbody.appendChild(row);
+        }
+    }
+
+    // Call the function to create table rows
+    createTableRows();
+
+    // Function to toggle visibility of rows
+    function toggleRows() {
+        const rows = document.querySelectorAll('#table-body tr');
+        const readMoreBtn = document.getElementById('readMoreBtn');
+
+        rows.forEach(row => {
+            if (row.classList.contains('hidden')) {
+                row.classList.remove('hidden');
+            } else {
+                if (parseInt(row.firstChild.textContent.slice(4)) > 10) {
+                    row.classList.add('hidden');
+                }
+            }
+        });
+
+        if (readMoreBtn.textContent === 'Read more') {
+            readMoreBtn.textContent = 'Read less';
+        } else {
+            readMoreBtn.textContent = 'Read more';
+        }
+    } -->
+
+
+     <!-- // Access the div element
+//      var dataDiv = document.getElementById("data");
+
+//     // Extract the content
+//     var jsonData = dataDiv.textContent;
+//   // Get the items_to_show data from Flask
+//     const data = JSON.parse(jsonData);
+
+//         // {
+//         //     link1: ['anchor1', 'response1'],
+//         //     link2: ['anchor2', 'response2'],
+//         //     link3: ['anchor2', 'response2'],
+//         //     link4: ['anchor2', 'response2'],
+//         //     link5: ['anchor2', 'response2'],
+//         //     link6: ['anchor2', 'response2'],
+//         //     link7: ['anchor2', 'response2'],
+//         //     link9: ['anchor2', 'response2'],
+//         //     link10: ['anchor2', 'response2'],
+//         //     link11: ['anchor2', 'response2'],
+//         //     link12: ['anchor2', 'response2'],
+//         //     link13: ['anchor2', 'response2'],
+//         //     link14: ['anchor2', 'response2'],
+//         //     link15: ['anchor2', 'response2'],
+//         //     // Add more data here...
+//         //     link100: ['anchor100', 'response100']
+//         //   };
+        
+//           // Function to create table rows
+//           function createTableRows() {
+//             const tbody = document.getElementById('table-body');
+        
+//             for (const [link, [anchor, response]] of Object.entries(data)) {
+//               const row = document.createElement('tr');
+//               const linkCell = document.createElement('td');
+//               const anchorCell = document.createElement('td');
+//               const responseCell = document.createElement('td');
+        
+//               linkCell.textContent = link;
+//               anchorCell.textContent = anchor;
+//               responseCell.textContent = response;
+        
+//               row.appendChild(linkCell);
+//               row.appendChild(anchorCell);
+//               row.appendChild(responseCell);
+        
+//               tbody.appendChild(row);
+        
+//               // Initially hide rows beyond the first 10
+//               if (parseInt(link.slice(4)) > 10) {
+//                 row.classList.add('hidden');
+//               }
+//             }
+//           }
+        
+//           // Call the function to create table rows
+//           createTableRows();
+        
+//           // Function to toggle visibility of rows
+//           function toggleRows() {
+//             const rows = document.querySelectorAll('#table-body tr');
+//             const readMoreBtn = document.getElementById('readMoreBtn');
+        
+//             rows.forEach(row => {
+//               if (row.classList.contains('hidden')) {
+//                 row.classList.remove('hidden');
+//               } else {
+//                 if (parseInt(row.firstChild.textContent.slice(4)) > 10) {
+//                   row.classList.add('hidden');
+//                 }
+//               }
+//             });
+        
+//             if (readMoreBtn.textContent === 'Read more') {
+//               readMoreBtn.textContent = 'Read less';
+//             } else {
+//               readMoreBtn.textContent = 'Read more';
+//             }
+//           } -->
+ 
+ 
+
+</body>
+</html>
